@@ -1,0 +1,204 @@
+/* Import Merriweather - Classy Serif Font */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for theme */
+:root {
+  /* Dark mode colors (default) */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A3A8;
+  --text-tertiary: #6B6E75;
+  --bg-primary: #0A0B0F;
+  --bg-secondary: #12141A;
+}
+
+.light-mode {
+  /* Light mode colors - Premium White + Soft Grey Palette */
+  --text-primary: #111111;
+  --text-secondary: #5a5a5a;
+  --text-tertiary: #8a8a8a;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F7FA;
+}
+
+/* Brilliant font - custom font cho tiêu đề chính */
+@font-face {
+  font-family: 'Brillant';
+  src: url('./assets/fonts/brillant.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  font-family: 'Merriweather', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0A0B0F;
+  min-height: 100vh;
+  color: #FFFFFF;
+  letter-spacing: 0.01em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Premium dark gradient background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at top, rgba(74, 144, 226, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom, rgba(167, 184, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Light Mode Styles - Premium White + Soft Grey */
+.light-mode body {
+  background: #FFFFFF;
+  color: #111111;
+}
+
+.light-mode body::before {
+  background: radial-gradient(ellipse at top, rgba(74, 144, 226, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom, rgba(167, 184, 255, 0.04) 0%, transparent 50%);
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom scrollbar - minimal and premium */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Light mode scrollbar */
+.light-mode ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.light-mode ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Premium glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Light mode glass effect - Enhanced Frosted Glass Style */
+.light-mode .glass {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(200, 204, 210, 0.6);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 
+              0 2px 8px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+}
+
+/* Subtle fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Blur to clear effect */
+@keyframes blurToClear {
+  from {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-blur-clear {
+  animation: blurToClear 0.6s ease-out;
+}
+
+/* Refined typography - Merriweather Style */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+p {
+  font-family: 'Merriweather', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* Light mode - add subtle text shadows for depth */
+.light-mode h1,
+.light-mode h2,
+.light-mode h3 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Light mode - button and input backgrounds */
+.light-mode button {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode input {
+  background: rgba(245, 247, 250, 0.5) !important;
+  border-color: rgba(200, 204, 210, 0.6) !important;
+  color: #111111 !important;
+}
+
+.light-mode input::placeholder {
+  color: #8a8a8a !important;
+}
+
+.light-mode input:focus {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(74, 144, 226, 0.5) !important;
+}
